@@ -1,11 +1,15 @@
 import Cliente from "./clientes.js";
 import Impuesto from "./impuestos.js";
 
-const impuesto = new Impuesto(1000000,100000);
+const monto_bruto_anual=parseInt( prompt("ingrese monto bruto anual",""));
+const deducciones=parseInt( prompt("ingrese monto por deducciones",""));
+const nombreCliente=prompt("Ingrese nombre del cliente");
 
-const cliente = new Cliente("Juan Pedro",impuesto);
+const impuesto = new Impuesto(monto_bruto_anual,deducciones);
+
+const cliente = new Cliente(nombreCliente,impuesto);
 
 const impuestoPorPagar=cliente.calcularImpuesto();
-document.body.innerHTML=`<h1>${impuestoPorPagar.texto} ${impuestoPorPagar.valor} </h1>`
+document.body.innerHTML=`<h2>${nombreCliente}: ${impuestoPorPagar.texto} ${impuestoPorPagar.valor} </h2>`
 
 console.log(impuestoPorPagar);
